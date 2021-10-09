@@ -34,8 +34,8 @@ namespace SIPVS_projekt1
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Name = new System.Windows.Forms.TextBox();
-            this.Surname = new System.Windows.Forms.TextBox();
+            this.CustomerName = new System.Windows.Forms.TextBox();
+            this.CustomerSurname = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,10 +44,10 @@ namespace SIPVS_projekt1
             this.generateBtn = new System.Windows.Forms.Button();
             this.errorLab = new System.Windows.Forms.Label();
             this.couponRdBtn = new System.Windows.Forms.RadioButton();
-            this.coupon = new System.Windows.Forms.TextBox();
+            this.Coupon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.BookName = new System.Windows.Forms.TextBox();
-            this.BookDays = new System.Windows.Forms.TextBox();
+            this.MovieName = new System.Windows.Forms.TextBox();
+            this.MovieDays = new System.Windows.Forms.TextBox();
             this.addEntryBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,20 +72,20 @@ namespace SIPVS_projekt1
             this.label2.TabIndex = 1;
             this.label2.Text = "Priezvisko";
             // 
-            // Name
+            // CustomerName
             // 
-            this.Name.Location = new System.Drawing.Point(15, 41);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(100, 20);
-            this.Name.TabIndex = 2;
+            this.CustomerName.Location = new System.Drawing.Point(15, 41);
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.Size = new System.Drawing.Size(100, 20);
+            this.CustomerName.TabIndex = 2;
             // 
-            // Surname
+            // CustomerSurname
             // 
-            this.Surname.Location = new System.Drawing.Point(160, 41);
-            this.Surname.Name = "Surname";
-            this.Surname.Size = new System.Drawing.Size(100, 20);
-            this.Surname.TabIndex = 3;
-            this.Surname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.CustomerSurname.Location = new System.Drawing.Point(160, 41);
+            this.CustomerSurname.Name = "CustomerSurname";
+            this.CustomerSurname.Size = new System.Drawing.Size(100, 20);
+            this.CustomerSurname.TabIndex = 3;
+            this.CustomerSurname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // saveBtn
             // 
@@ -95,6 +95,7 @@ namespace SIPVS_projekt1
             this.saveBtn.TabIndex = 4;
             this.saveBtn.Text = "Uložiť";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // dateTimePicker1
             // 
@@ -162,12 +163,12 @@ namespace SIPVS_projekt1
             this.couponRdBtn.Text = "Mám zlavový kupón";
             this.couponRdBtn.UseVisualStyleBackColor = true;
             // 
-            // coupon
+            // Coupon
             // 
-            this.coupon.Location = new System.Drawing.Point(313, 319);
-            this.coupon.Name = "coupon";
-            this.coupon.Size = new System.Drawing.Size(100, 20);
-            this.coupon.TabIndex = 16;
+            this.Coupon.Location = new System.Drawing.Point(313, 319);
+            this.Coupon.Name = "Coupon";
+            this.Coupon.Size = new System.Drawing.Size(100, 20);
+            this.Coupon.TabIndex = 16;
             // 
             // label3
             // 
@@ -178,19 +179,19 @@ namespace SIPVS_projekt1
             this.label3.TabIndex = 17;
             this.label3.Text = "Kupón:";
             // 
-            // BookName
+            // MovieName
             // 
-            this.BookName.Location = new System.Drawing.Point(15, 86);
-            this.BookName.Name = "BookName";
-            this.BookName.Size = new System.Drawing.Size(100, 20);
-            this.BookName.TabIndex = 18;
+            this.MovieName.Location = new System.Drawing.Point(15, 86);
+            this.MovieName.Name = "MovieName";
+            this.MovieName.Size = new System.Drawing.Size(100, 20);
+            this.MovieName.TabIndex = 18;
             // 
-            // BookDays
+            // MovieDays
             // 
-            this.BookDays.Location = new System.Drawing.Point(160, 86);
-            this.BookDays.Name = "BookDays";
-            this.BookDays.Size = new System.Drawing.Size(100, 20);
-            this.BookDays.TabIndex = 19;
+            this.MovieDays.Location = new System.Drawing.Point(160, 86);
+            this.MovieDays.Name = "MovieDays";
+            this.MovieDays.Size = new System.Drawing.Size(100, 20);
+            this.MovieDays.TabIndex = 19;
             // 
             // addEntryBtn
             // 
@@ -207,9 +208,9 @@ namespace SIPVS_projekt1
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(15, 70);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 22;
-            this.label6.Text = "Názov knihy";
+            this.label6.Text = "Názov filmu";
             // 
             // label7
             // 
@@ -228,10 +229,10 @@ namespace SIPVS_projekt1
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.addEntryBtn);
-            this.Controls.Add(this.BookDays);
-            this.Controls.Add(this.BookName);
+            this.Controls.Add(this.MovieDays);
+            this.Controls.Add(this.MovieName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.coupon);
+            this.Controls.Add(this.Coupon);
             this.Controls.Add(this.couponRdBtn);
             this.Controls.Add(this.errorLab);
             this.Controls.Add(this.generateBtn);
@@ -240,10 +241,11 @@ namespace SIPVS_projekt1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.Surname);
-            this.Controls.Add(this.Name);
+            this.Controls.Add(this.CustomerSurname);
+            this.Controls.Add(this.CustomerName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.MovieDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -254,8 +256,8 @@ namespace SIPVS_projekt1
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox Name;
-        private System.Windows.Forms.TextBox Surname;
+        private System.Windows.Forms.TextBox CustomerName;
+        private System.Windows.Forms.TextBox CustomerSurname;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
@@ -264,10 +266,10 @@ namespace SIPVS_projekt1
         private System.Windows.Forms.Button generateBtn;
         private System.Windows.Forms.Label errorLab;
         private System.Windows.Forms.RadioButton couponRdBtn;
-        private System.Windows.Forms.TextBox coupon;
+        private System.Windows.Forms.TextBox Coupon;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox BookName;
-        private System.Windows.Forms.TextBox BookDays;
+        private System.Windows.Forms.TextBox MovieName;
+        private System.Windows.Forms.TextBox MovieDays;
         private System.Windows.Forms.Button addEntryBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

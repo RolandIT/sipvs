@@ -18,3 +18,13 @@ C:\Users\Roland\Documents\STU FIIT\ING\3. semester\Zadania\SIPVS_projekt1\SIPVS_
 C:\Users\Roland\Documents\STU FIIT\ING\3. semester\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CoreCompileInputs.cache
 C:\Users\Roland\Documents\STU FIIT\ING\3. semester\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.exe
 C:\Users\Roland\Documents\STU FIIT\ING\3. semester\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.pdb
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Form1.resources
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Properties.Resources.resources
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.GenerateResource.cache
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.exe
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.pdb
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe.config
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe
+C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.pdb
