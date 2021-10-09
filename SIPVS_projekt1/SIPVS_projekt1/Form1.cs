@@ -42,9 +42,14 @@ namespace SIPVS_projekt1
 
         private void addEntryBtn_Click(object sender, EventArgs e)
         {
-            log.Doc.Movies.AddLast(new MovieTableEntry(BookName.Text.ToString(),BookDays.Text.ToString()));
+            if (MovieName.Text == null || MovieDays.Text == null)
+            {
+                //handle pizdec, also probably check if MovieDays is parseable into int
+                return;
+            }
+            log.addMovie(MovieName.Text, int.Parse(MovieDays.Text));
             
-            dt.Rows.Add(log.Doc.Movies.Last.Value.MovieName, log.Doc.Movies.Last.Value.MovieDays);
+            dt.Rows.Add(MovieName.Text, MovieDays.Text);
         }
 
         void removeBtnHandler(object sender, DataGridViewCellEventArgs e)
@@ -54,11 +59,19 @@ namespace SIPVS_projekt1
                 MovieDataGrid.Columns["Odstrániť"].Index) return;
 
             dt.Rows.RemoveAt(e.RowIndex);
-            log.Doc.Movies.Remove(log.Doc.Movies.ElementAt(e.RowIndex));
+            log.removeMovie(e.RowIndex);
             /*for(LinkedListNode<MovieTableEntry> x = log.Doc.Movies.First; x != null;){
                 Console.WriteLine(x.Value.MovieName);
                 x = x.Next;
             }*/
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            //perform checks to see if anything is empty or we
+            log.setOrderDate(dateTimePicker1.Value.Date);
+            log.setCustomer(CustomerName.Text, CustomerSurname.Text, couponRdBtn.Checked, Coupon.Text);
+            log.saveXML();
         }
     }
 }

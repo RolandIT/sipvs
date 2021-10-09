@@ -16,3 +16,26 @@
         </film>
     </filmy>
 </objednavka>
+
+<Objednavka xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <datum>2021-10-10</datum>
+  <zakaznik cislo_kuponu="Blin">
+    <meno>Jano</meno>
+    <priezvisko>Krivy</priezvisko>
+    <ma_kupon>true</ma_kupon>
+  </zakaznik>
+  <filmy>
+    <Film>
+      <nazov>IT</nazov>
+      <dlzka_vypozicania>3</dlzka_vypozicania>
+    </Film>
+    <Film>
+      <nazov>Pizdec Blyat</nazov>
+      <dlzka_vypozicania>6</dlzka_vypozicania>
+    </Film>
+    <Film>
+      <nazov>Nachuj</nazov>
+      <dlzka_vypozicania>9</dlzka_vypozicania>
+    </Film>
+  </filmy>
+</Objednavka>
