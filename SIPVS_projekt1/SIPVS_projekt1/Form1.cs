@@ -16,6 +16,7 @@ namespace SIPVS_projekt1
     public partial class Form1 : Form
     {
         private string s;
+        private string s1;
         private DataTable dt;
         private Logic log;
         public Form1()
@@ -50,7 +51,15 @@ namespace SIPVS_projekt1
                 //handle pizdec, also probably check if MovieDays is parseable into int
                 return;
             }
+            try { 
             log.addMovie(MovieName.Text, int.Parse(MovieDays.Text));
+            }
+            catch
+            {
+                errorLab.Visible = true;
+                errorLab.Text = "Pocet dni musi byt cele cislo";
+                return;
+            }
 
             dt.Rows.Add(MovieName.Text, MovieDays.Text);
         }
@@ -73,7 +82,7 @@ namespace SIPVS_projekt1
         {
             //perform checks to see if anything is empty or we
             log.setOrderDate(dateTimePicker1.Value.Date);
-            log.setCustomer(CustomerName.Text, CustomerSurname.Text, couponRdBtn.Checked, Coupon.Text);
+            log.setCustomer(CustomerName.Text, CustomerSurname.Text, couponBtn.Checked, Coupon.Text);
             log.saveXML();
         }
 
@@ -93,6 +102,50 @@ namespace SIPVS_projekt1
             if (result == DialogResult.OK)
             {
                 s = openFileDialog1.FileName;
+            }
+        }
+
+        private void couponRdBtn_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                s1 = openFileDialog1.FileName;
+            }
+        }
+
+        private void validateBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                log.validate(s1);
+                errorLab.Visible = true;
+                errorLab.Text = "Dokument je validny";
+            }
+            catch(Exception err)
+            {
+                errorLab.Text = err.Message;
+                errorLab.Visible = true;
+                return;
+            }
+        }
+
+        private void couponBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (couponBtn.Checked)
+            {
+                couponLb.Visible = true;
+                Coupon.Visible = true;
+            }
+            else
+            {
+                couponLb.Visible = false;
+                Coupon.Visible = false;
             }
         }
     }

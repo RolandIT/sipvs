@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			targetNamespace="http://www.rent.movies.com/xml/order"
+			xmlns="http://www.rent.movies.com/xml/order"
 			version="1.0" 
 			elementFormDefault="qualified"
-			xmlns="http://www.rent.movies.com/xml/order">
-    <xsd:root name="objednavka" type="objednavkaType"/>
+			>
+    <xsd:element name="objednavka" type="objednavkaType"/>
 	
 	<xsd:complexType name="objednavkaType">
         <xsd:sequence>

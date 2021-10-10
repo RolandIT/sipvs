@@ -47,7 +47,7 @@ namespace SIPVS_projekt1
         }
     }
 
-    [XmlType("objednavka")]
+    [XmlRoot("objednavka", Namespace = "http://www.rent.movies.com/xml/order")]
     public class Objednavka
     {
         [XmlElement(DataType = "date", ElementName = "datum")]
