@@ -28,3 +28,13 @@ C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_pr
 C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe.config
 C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe
 C:\Users\User\Desktop\git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.pdb
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe.config
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.pdb
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.AssemblyReference.cache
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Form1.resources
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Properties.Resources.resources
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.GenerateResource.cache
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CoreCompileInputs.cache
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.exe
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.pdb

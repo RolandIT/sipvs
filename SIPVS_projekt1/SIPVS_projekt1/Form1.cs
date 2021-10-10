@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Xsl;
+using System.Threading;
 
 namespace SIPVS_projekt1
 {
     public partial class Form1 : Form
     {
+        private string s;
         private DataTable dt;
         private Logic log;
         public Form1()
@@ -48,7 +51,7 @@ namespace SIPVS_projekt1
                 return;
             }
             log.addMovie(MovieName.Text, int.Parse(MovieDays.Text));
-            
+
             dt.Rows.Add(MovieName.Text, MovieDays.Text);
         }
 
@@ -72,6 +75,25 @@ namespace SIPVS_projekt1
             log.setOrderDate(dateTimePicker1.Value.Date);
             log.setCustomer(CustomerName.Text, CustomerSurname.Text, couponRdBtn.Checked, Coupon.Text);
             log.saveXML();
+        }
+
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            this.errorLab.Visible = true;
+            this.errorLab.Text = "HTML súbor sa zobrazí vo Vami využívanom webovom prehliadači!";
+            XslCompiledTransform xslt = new XslCompiledTransform();
+            xslt.Load("generate_xml.xsl");
+            xslt.Transform(this.s, "html_output.html");
+            System.Diagnostics.Process.Start("html_output.html");
+        }
+
+        private void chooseFile_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                s = openFileDialog1.FileName;
+            }
         }
     }
 }
