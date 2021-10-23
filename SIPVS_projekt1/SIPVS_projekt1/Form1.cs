@@ -102,20 +102,7 @@ namespace SIPVS_projekt1
             if (result == DialogResult.OK)
             {
                 s = openFileDialog1.FileName;
-            }
-        }
-
-        private void couponRdBtn_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                s1 = openFileDialog1.FileName;
+                log.setFileName(s);
             }
         }
 
@@ -123,7 +110,7 @@ namespace SIPVS_projekt1
         {
             try
             {
-                log.validate(s1);
+                log.validate();
                 errorLab.Visible = true;
                 errorLab.Text = "Dokument je validny";
             }
@@ -147,6 +134,11 @@ namespace SIPVS_projekt1
                 couponLb.Visible = false;
                 Coupon.Visible = false;
             }
+        }
+
+        private void buttonSign_Click(object sender, EventArgs e)
+        {
+            log.signDocumentAsync();
         }
     }
 }

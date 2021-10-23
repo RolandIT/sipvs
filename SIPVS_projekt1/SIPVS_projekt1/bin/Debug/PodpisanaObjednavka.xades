@@ -1,0 +1,41 @@
+<xzep:DataEnvelope xmlns:xzep="http://www.ditec.sk/ep/signature_formats/xades_zep/v1.0"><ds:Object Id="Objednavka" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xzep="http://www.ditec.sk/ep/signature_formats/xades_zep/v1.0"><objednavka xmlns="http://www.rent.movies.com/xml/order">
+  <datum>2021-10-23</datum>
+  <zakaznik cislo_kuponu="KUPON">
+    <meno>Janco</meno>
+    <priezvisko>Peder</priezvisko>
+    <ma_kupon>true</ma_kupon>
+  </zakaznik>
+  <filmy>
+    <film>
+      <nazov>IT</nazov>
+      <dlzka_vypozicania>15</dlzka_vypozicania>
+    </film>
+  </filmy>
+</objednavka></ds:Object><ds:Object Id="ObjednavkaVerificationObject" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xzep="http://www.ditec.sk/ep/signature_formats/xades_zep/v1.0"><XMLVerificationDataReferences xmlns="http://www.ditec.sk/ep/signature_formats/xades_zep_xml/v1.0" DataTarget="#Objednavka"><SchemaReference><ds:Reference URI="http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>eVXg2UyoExB0AIMUmNVgXJ2eAk3tbxjYkxIKdkkYIrM=</ds:DigestValue></ds:Reference></SchemaReference><VisualTransformReference><ds:Reference URI="http://www.example.com/xml/sb"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>mqNid4FUkX9RZlHAp6B9cSd5+MXst1Pho8cZQmQV31g=</ds:DigestValue></ds:Reference></VisualTransformReference></XMLVerificationDataReferences></ds:Object><ds:Signature Id="signatureId" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xzep="http://www.ditec.sk/ep/signature_formats/xades_zep/v1.0"><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><ds:Reference Id="ReferencesignatureIdSignedProperties" Type="http://uri.etsi.org/01903#SignedProperties" URI="#signatureIdSignedProperties"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>0jCgld/7B2rWjwQcSTioIi4sZdpgPS74UjBKt/h31wg=</ds:DigestValue></ds:Reference><ds:Reference Id="ReferenceManifestObjednavka_132e5a86-99f4-4575-9a85-3b6e42e6a100" Type="http://www.w3.org/2000/09/xmldsig#Manifest" URI="#ManifestObjednavka_132e5a86-99f4-4575-9a85-3b6e42e6a100"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>8AGYw7MnLhm7bFEttIpUR3MGyFzcezuMbGHgj7Zp7+Y=</ds:DigestValue></ds:Reference><ds:Reference Id="ReferenceManifestObjednavkaVerificationObject_132e5a86-99f4-4575-9a85-3b6e42e6a100" Type="http://www.w3.org/2000/09/xmldsig#Manifest" URI="#ManifestObjednavkaVerificationObject_132e5a86-99f4-4575-9a85-3b6e42e6a100"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>ypdm4RlfNLOMa0PLUkkfR7fFI4kakvnRKcenLanuhII=</ds:DigestValue></ds:Reference><ds:Reference Id="ReferencesignatureIdSignatureProperties" Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#signatureIdSignatureProperties"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>JdY/Wc+sIU+30K7tbPIgN3v2OHrwwTyLRWAZlhn4xZ4=</ds:DigestValue></ds:Reference><ds:Reference Id="ReferencesignatureIdKeyInfo" Type="http://www.w3.org/2000/09/xmldsig#Object" URI="#signatureIdKeyInfo"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>e/3FaYJybnWdcAyYoV3RbtiVzRNt3JDcnLRvp0+mgss=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="signatureIdSignatureValue">H9ISChjjKvtl5//xDXrRb0LWghWdNq2VcPrVszzD/DDTfq+j4iWd1G/awzAVPX/vG2ZRcJlD6vG4
+7Z8TQGIrItdSOgDQVO0RgrMSRePzqtfYQPdtKsYNLHbs1tUVqtWtw0y8QAyDdzMJn+qmu3/mLolY
+Pl+qtIa1mQ2gvlrysE7ep/2iS+5PR5pFWruxiFC24USQqvi7f/AhqMybRbqTm/B5DjY5/aODZB7i
+he2+Vo1eYAEIiOODpqFu6jWNzLglDALa2aHmPeZZzdB9Ky6tPcf6vSAIz/KPeYsIvP/5mLvxOZG7
+4m1yXdnkq/uDp5Q+9Sd/xaxFjT7U0T9x7wHr/Q==</ds:SignatureValue><ds:KeyInfo Id="signatureIdKeyInfo" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xzep="http://www.ditec.sk/ep/signature_formats/xades_zep/v1.0"><ds:X509Data><ds:X509Certificate>MIIFLDCCAxSgAwIBAgIKc02ZbgAAAAAHTDANBgkqhkiG9w0BAQ0FADBwMQswCQYDVQQGEwJTSzER
+MA8GA1UECBMIU2xvdmFraWExEzARBgNVBAcTCkJyYXRpc2xhdmExDjAMBgNVBAoTBURJVEVDMSkw
+JwYDVQQDEyBEVEMgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjAyMDAeFw0yMDEwMDIwOTU4NTFa
+Fw0yNDEwMDIxMDA4NTFaMD4xCzAJBgNVBAYTAlNLMRMwEQYDVQQHEwpCcmF0aXNsYXZhMRowGAYD
+VQQDExFGSUlUIFBvZHBpc292YXRlbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOtU
+Q9C/GPo2N3R0w9mKFSMXsRrVOJUb71NK7NHpob79kFfEo+vDmIHhkWe2mBCHKGLeMpQqeMX2coks
+pMgVPscCvfG5ZIYMhRuRN38Gi6vOZh1YFeJZH/NvzgSAo0oNmfOw9FD+r8zGuKrMHmwCgyDQKFsW
+SoSnkEhXnQgAHUzc6cNfksaFs57N7IeeJuCl4p+6J6qyNUlJkfP5RWb20OFExeE8pW8pkyJJHf+D
+40ocoMZZs+WTFEByAQFOKOAmUbaaITS1pmnICE25hwvj5Sx5T6jITfwO00AEO82ze5wEvbGz+EjK
+ozNXuRAUrUJN2fGcJR76SKO5KkPinRp6xUkCAwEAAaOB+TCB9jAOBgNVHQ8BAf8EBAMCBPAwEwYD
+VR0lBAwwCgYIKwYBBQUHAwIwHQYDVR0OBBYEFBUZ8IisOlKWyhxmo6JGR43Mi+VcMB8GA1UdIwQY
+MBaAFLcwue0VJeRU/tRuu07tfjUOcd4cMEEGA1UdHwQ6MDgwNqA0oDKGMGh0dHA6Ly90ZXN0LmRp
+dGVjLnNrL1BLSS9EVENDQTIwMjAvRFRDQ0EyMDIwLmNybDBMBggrBgEFBQcBAQRAMD4wPAYIKwYB
+BQUHMAKGMGh0dHA6Ly90ZXN0LmRpdGVjLnNrL1BLSS9EVENDQTIwMjAvRFRDQ0EyMDIwLmNydDAN
+BgkqhkiG9w0BAQ0FAAOCAgEAKGEvGbI5Jb+JLnjY475HxAZvMacY4M5sNtw8gT+Q2MKkMHAI5KS1
+ZK0IUZb+o/lPok22+FMFGRVQr44ofRh7RA6QMUvsJxhfeEibjpt04C876xMCCgZAJ1QNs92Bn1mr
+lb79Yz9WVaY61fVmkF9tpUOYc99fL19PPMNYZI5Iwm1qqh5WSgapP0Sg/vswgp9PpTaGjkOKoBkn
++WoMrdh/915yEJ2k91fuS37hfFHP/42mrSn2UGo5x+wNqTV6intNfGbVBk2idqnwKCDfUheoolXr
+dJdqWBBk+kO/MzUQvIOuYdhg1xKkULdAYo/aRUA6Cqj6KYpyQI4JEs+X2YgHC7sG7sn7KqGqIHUY
+2D046hbaDCp/DvVp9yZJHlbI21j0oDdT76zblrlodaZ7u6IGKdGRc37MoETvEGn41WNVK1OcM7dV
+IOVrn0DST7O7Spc+vtIP1YdNPHG0vfGrskRmuk86AUxH+3RSx6MAjJdWerU/gVIs3VibuJW8KOTC
+qs/Tpi/7cmBIsHuVbMRitadFzTY582GS8FiHU5voAOdfFJSxj3cvqDVoowmK9ubj+kKpL8A17qEa
+KfuEjH0L0lf05fVA7g7K0rWXLFl6a9uRisd+XjY1IW2xR1MkCElH7s7B8BXo7bE44RggkBWXB3Ug
+QGTV1adYPjDo4+D6lUVuXbk=</ds:X509Certificate><ds:X509IssuerSerial><ds:X509IssuerName>CN=DTC Certification Authority 2020, O=DITEC, L=Bratislava, S=Slovakia, C=SK</ds:X509IssuerName><ds:X509SerialNumber>544503600597820076197708</ds:X509SerialNumber></ds:X509IssuerSerial><ds:X509SubjectName>CN=FIIT Podpisovatel, L=Bratislava, C=SK</ds:X509SubjectName></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#signatureId"><xades:SignedProperties Id="signatureIdSignedProperties" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xzep="http://www.ditec.sk/ep/signature_formats/xades_zep/v1.0"><xades:SignedSignatureProperties><xades:SigningTime>2021-10-23T21:28:30+02:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>yDlnyNbmnsrq5+4P5FWKn7Mc75WZl5UaKszxEGct6ps=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=DTC Certification Authority 2020, O=DITEC, L=Bratislava, S=Slovakia, C=SK</ds:X509IssuerName><ds:X509SerialNumber>544503600597820076197708</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate><xades:SignaturePolicyIdentifier><xades:SignaturePolicyId><xades:SigPolicyId><xades:Identifier>urn:oid:1.3.158.36061701.1.2.3</xades:Identifier></xades:SigPolicyId><xades:SigPolicyHash><d

@@ -52,15 +52,16 @@ namespace SIPVS_projekt1
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chooseFile = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.couponBtn = new System.Windows.Forms.CheckBox();
+            this.buttonSign = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MovieDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 25);
+            this.label1.Location = new System.Drawing.Point(11, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 0;
@@ -69,7 +70,7 @@ namespace SIPVS_projekt1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 25);
+            this.label2.Location = new System.Drawing.Point(156, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
@@ -77,14 +78,14 @@ namespace SIPVS_projekt1
             // 
             // CustomerName
             // 
-            this.CustomerName.Location = new System.Drawing.Point(15, 41);
+            this.CustomerName.Location = new System.Drawing.Point(14, 70);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(100, 20);
             this.CustomerName.TabIndex = 2;
             // 
             // CustomerSurname
             // 
-            this.CustomerSurname.Location = new System.Drawing.Point(160, 41);
+            this.CustomerSurname.Location = new System.Drawing.Point(159, 70);
             this.CustomerSurname.Name = "CustomerSurname";
             this.CustomerSurname.Size = new System.Drawing.Size(100, 20);
             this.CustomerSurname.TabIndex = 3;
@@ -92,9 +93,10 @@ namespace SIPVS_projekt1
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(15, 374);
+            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.saveBtn.Location = new System.Drawing.Point(9, 403);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.Size = new System.Drawing.Size(122, 62);
             this.saveBtn.TabIndex = 4;
             this.saveBtn.Text = "Uložiť";
             this.saveBtn.UseVisualStyleBackColor = true;
@@ -102,7 +104,7 @@ namespace SIPVS_projekt1
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(15, 284);
+            this.dateTimePicker1.Location = new System.Drawing.Point(14, 313);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
@@ -110,7 +112,7 @@ namespace SIPVS_projekt1
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 268);
+            this.label4.Location = new System.Drawing.Point(11, 297);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 9;
@@ -121,7 +123,7 @@ namespace SIPVS_projekt1
             this.MovieDataGrid.AllowUserToAddRows = false;
             this.MovieDataGrid.AllowUserToDeleteRows = false;
             this.MovieDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MovieDataGrid.Location = new System.Drawing.Point(18, 123);
+            this.MovieDataGrid.Location = new System.Drawing.Point(17, 152);
             this.MovieDataGrid.Name = "MovieDataGrid";
             this.MovieDataGrid.RowHeadersWidth = 51;
             this.MovieDataGrid.Size = new System.Drawing.Size(395, 128);
@@ -129,9 +131,9 @@ namespace SIPVS_projekt1
             // 
             // validateBtn
             // 
-            this.validateBtn.Location = new System.Drawing.Point(160, 413);
+            this.validateBtn.Location = new System.Drawing.Point(150, 442);
             this.validateBtn.Name = "validateBtn";
-            this.validateBtn.Size = new System.Drawing.Size(75, 23);
+            this.validateBtn.Size = new System.Drawing.Size(122, 23);
             this.validateBtn.TabIndex = 12;
             this.validateBtn.Text = "Validovať";
             this.validateBtn.UseVisualStyleBackColor = true;
@@ -139,7 +141,7 @@ namespace SIPVS_projekt1
             // 
             // generateBtn
             // 
-            this.generateBtn.Location = new System.Drawing.Point(290, 413);
+            this.generateBtn.Location = new System.Drawing.Point(289, 442);
             this.generateBtn.Name = "generateBtn";
             this.generateBtn.Size = new System.Drawing.Size(122, 23);
             this.generateBtn.TabIndex = 13;
@@ -151,7 +153,7 @@ namespace SIPVS_projekt1
             // 
             this.errorLab.AutoSize = true;
             this.errorLab.ForeColor = System.Drawing.Color.Red;
-            this.errorLab.Location = new System.Drawing.Point(13, 441);
+            this.errorLab.Location = new System.Drawing.Point(12, 470);
             this.errorLab.Name = "errorLab";
             this.errorLab.Size = new System.Drawing.Size(35, 13);
             this.errorLab.TabIndex = 30;
@@ -160,7 +162,7 @@ namespace SIPVS_projekt1
             // 
             // Coupon
             // 
-            this.Coupon.Location = new System.Drawing.Point(313, 319);
+            this.Coupon.Location = new System.Drawing.Point(312, 348);
             this.Coupon.Name = "Coupon";
             this.Coupon.Size = new System.Drawing.Size(100, 20);
             this.Coupon.TabIndex = 16;
@@ -169,7 +171,7 @@ namespace SIPVS_projekt1
             // couponLb
             // 
             this.couponLb.AutoSize = true;
-            this.couponLb.Location = new System.Drawing.Point(266, 323);
+            this.couponLb.Location = new System.Drawing.Point(265, 352);
             this.couponLb.Name = "couponLb";
             this.couponLb.Size = new System.Drawing.Size(41, 13);
             this.couponLb.TabIndex = 17;
@@ -178,21 +180,21 @@ namespace SIPVS_projekt1
             // 
             // MovieName
             // 
-            this.MovieName.Location = new System.Drawing.Point(15, 86);
+            this.MovieName.Location = new System.Drawing.Point(14, 115);
             this.MovieName.Name = "MovieName";
             this.MovieName.Size = new System.Drawing.Size(100, 20);
             this.MovieName.TabIndex = 18;
             // 
             // MovieDays
             // 
-            this.MovieDays.Location = new System.Drawing.Point(160, 86);
+            this.MovieDays.Location = new System.Drawing.Point(159, 115);
             this.MovieDays.Name = "MovieDays";
             this.MovieDays.Size = new System.Drawing.Size(100, 20);
             this.MovieDays.TabIndex = 19;
             // 
             // addEntryBtn
             // 
-            this.addEntryBtn.Location = new System.Drawing.Point(290, 84);
+            this.addEntryBtn.Location = new System.Drawing.Point(289, 113);
             this.addEntryBtn.Name = "addEntryBtn";
             this.addEntryBtn.Size = new System.Drawing.Size(75, 23);
             this.addEntryBtn.TabIndex = 20;
@@ -203,7 +205,7 @@ namespace SIPVS_projekt1
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 70);
+            this.label6.Location = new System.Drawing.Point(14, 99);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 22;
@@ -212,7 +214,7 @@ namespace SIPVS_projekt1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(157, 70);
+            this.label7.Location = new System.Drawing.Point(156, 99);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 23;
@@ -224,28 +226,19 @@ namespace SIPVS_projekt1
             // 
             // chooseFile
             // 
-            this.chooseFile.Location = new System.Drawing.Point(290, 374);
+            this.chooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.chooseFile.Location = new System.Drawing.Point(150, 403);
             this.chooseFile.Name = "chooseFile";
-            this.chooseFile.Size = new System.Drawing.Size(122, 38);
+            this.chooseFile.Size = new System.Drawing.Size(261, 38);
             this.chooseFile.TabIndex = 14;
-            this.chooseFile.Text = "Vybrať súbor na generovanie";
+            this.chooseFile.Text = "Vybrať súbor";
             this.chooseFile.UseVisualStyleBackColor = true;
             this.chooseFile.Click += new System.EventHandler(this.chooseFile_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(138, 374);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 38);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Vybrať súbor na validáciu";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // couponBtn
             // 
             this.couponBtn.AutoSize = true;
-            this.couponBtn.Location = new System.Drawing.Point(18, 319);
+            this.couponBtn.Location = new System.Drawing.Point(17, 348);
             this.couponBtn.Name = "couponBtn";
             this.couponBtn.Size = new System.Drawing.Size(122, 17);
             this.couponBtn.TabIndex = 32;
@@ -253,13 +246,37 @@ namespace SIPVS_projekt1
             this.couponBtn.UseVisualStyleBackColor = true;
             this.couponBtn.CheckedChanged += new System.EventHandler(this.couponBtn_CheckedChanged);
             // 
+            // buttonSign
+            // 
+            this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSign.ForeColor = System.Drawing.Color.Black;
+            this.buttonSign.Location = new System.Drawing.Point(289, 492);
+            this.buttonSign.Name = "buttonSign";
+            this.buttonSign.Size = new System.Drawing.Size(122, 38);
+            this.buttonSign.TabIndex = 33;
+            this.buttonSign.Text = "Podpísať teraz";
+            this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 20F);
+            this.label3.Location = new System.Drawing.Point(85, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(236, 32);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Objednávka filmov";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 542);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonSign);
             this.Controls.Add(this.couponBtn);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.addEntryBtn);
@@ -308,8 +325,9 @@ namespace SIPVS_projekt1
         private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button chooseFile;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox couponBtn;
+        private System.Windows.Forms.Button buttonSign;
+        private System.Windows.Forms.Label label3;
     }
 }
 

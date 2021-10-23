@@ -36,6 +36,18 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ditec.Zep.DSigXades, Version=4.0.0.9, Culture=neutral, PublicKeyToken=7b8b3564548fe47e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Ditec\DSigner .NET\Ditec.Zep.DSigXades.dll</HintPath>
+    </Reference>
+    <Reference Include="Ditec.Zep.DSigXades.Core, Version=4.0.0.4, Culture=neutral, PublicKeyToken=7b8b3564548fe47e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Ditec\DSigner .NET\Ditec.Zep.DSigXades.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ditec.Zep.DSigXades.XmlPlugin, Version=4.0.0.11, Culture=neutral, PublicKeyToken=7b8b3564548fe47e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Ditec\DSigner .NET\Ditec.Zep.DSigXades.XmlPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -84,6 +96,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Ditec_Zep_DSigXades_XmlPluginAtl">
+      <Guid>{51E9B731-329F-4ECD-B9CE-7CF692C189A3}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
