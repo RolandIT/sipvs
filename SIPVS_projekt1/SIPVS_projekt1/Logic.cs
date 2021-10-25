@@ -111,15 +111,14 @@ namespace SIPVS_projekt1
             {
                 Console.WriteLine(dsig.ErrorMessage);
             }
-            //, "dataEnvelopeId", "dataEnvelopeURI", "dataEnvelopeDescr"
+
             if (dsig.Sign("signatureId", null, "urn:oid:1.3.158.36061701.1.2.3") != 0)
             {
                 Console.WriteLine(dsig.ErrorMessage);
             }
             Console.WriteLine(dsig.SignedXmlWithEnvelope);
             File.WriteAllText("PodpisanaObjednavka.xades", dsig.SignedXmlWithEnvelope);
-            /*StreamWriter file = new StreamWriter("PodpisanaObjednavka.xades", append: false);
-            await file.WriteLineAsync(dsig.SignedXmlWithEnvelope);*/
+
         }
 
     }
