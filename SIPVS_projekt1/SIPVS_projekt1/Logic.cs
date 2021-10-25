@@ -105,7 +105,7 @@ namespace SIPVS_projekt1
             string xml_string = System.IO.File.ReadAllText(fileName);
             string xsd_string = System.IO.File.ReadAllText(XSD_NAME);
 
-            xmlPlugin.CreateObject("Objednavka", "Objednavka", xml_string, xsd_string, NAMESPACE_URI, "http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd", xls_string, "http://www.example.com/xml/sb");
+            xmlPlugin.CreateObject2("Objednavka", "Objednavka", xml_string, xsd_string, NAMESPACE_URI, "http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd", xls_string, "http://www.example.com/xml/sb", "HTML");
             Console.WriteLine(xmlPlugin.ErrorMessage);
             if(dsig.AddObject(xmlPlugin.CreateObject2("Objednavka", "Objednavka", xml_string, xsd_string, NAMESPACE_URI, "http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd", xls_string, "http://www.example.com/xml/sb", "HTML")) != 0)
             {
