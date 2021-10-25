@@ -22,7 +22,7 @@
 	</html>
 </xsl:template>
 <xsl:template match="order:filmy/order:film">
-  <TR bgcolor="#eee">
+  <TR>
     <TD><xsl:value-of select="order:nazov"/></TD>
     <TD><xsl:value-of select="order:dlzka_vypozicania"/></TD>
   </TR>

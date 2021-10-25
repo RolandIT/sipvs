@@ -97,7 +97,7 @@ namespace SIPVS_projekt1
             System.Diagnostics.Process.Start("html_output.html");
         }
 
-        public async Task signDocumentAsync()
+        public void signDocumentAsync()
         {
             XmlPlugin xmlPlugin = new XmlPlugin();
             XadesSig dsig = new XadesSig();
@@ -107,18 +107,19 @@ namespace SIPVS_projekt1
 
             xmlPlugin.CreateObject("Objednavka", "Objednavka", xml_string, xsd_string, NAMESPACE_URI, "http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd", xls_string, "http://www.example.com/xml/sb");
             Console.WriteLine(xmlPlugin.ErrorMessage);
-            if(dsig.AddObject(xmlPlugin.CreateObject("Objednavka", "Objednavka", xml_string, xsd_string, NAMESPACE_URI, "http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd", xls_string, "http://www.example.com/xml/sb")) != 0)
+            if(dsig.AddObject(xmlPlugin.CreateObject2("Objednavka", "Objednavka", xml_string, xsd_string, NAMESPACE_URI, "http://www.egov.sk/mvsr/NEV/datatypes/Zapis/Ext/PodanieZiadostiOPrihlasenieImporteromSoZepUI.1.0.xsd", xls_string, "http://www.example.com/xml/sb", "HTML")) != 0)
             {
                 Console.WriteLine(dsig.ErrorMessage);
             }
             //, "dataEnvelopeId", "dataEnvelopeURI", "dataEnvelopeDescr"
-            if (dsig.Sign("signatureId", "http://www.w3.org/2001/04/xmlenc#sha256", "urn:oid:1.3.158.36061701.1.2.3") != 0)
+            if (dsig.Sign("signatureId", null, "urn:oid:1.3.158.36061701.1.2.3") != 0)
             {
                 Console.WriteLine(dsig.ErrorMessage);
             }
             Console.WriteLine(dsig.SignedXmlWithEnvelope);
-            StreamWriter file = new StreamWriter("PodpisanaObjednavka.xades", append: false);
-            await file.WriteLineAsync(dsig.SignedXmlWithEnvelope);
+            File.WriteAllText("PodpisanaObjednavka.xades", dsig.SignedXmlWithEnvelope);
+            /*StreamWriter file = new StreamWriter("PodpisanaObjednavka.xades", append: false);
+            await file.WriteLineAsync(dsig.SignedXmlWithEnvelope);*/
         }
 
     }

@@ -64,3 +64,10 @@ C:\Users\satej\Desktop\FIIT\6.rocnik\zima\sipvs\sipvs\SIPVS_projekt1\SIPVS_proje
 C:\Users\satej\Desktop\FIIT\6.rocnik\zima\sipvs\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.dll
 C:\Users\satej\Desktop\FIIT\6.rocnik\zima\sipvs\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\Interop.Ditec_Zep_DSigXades_XmlPluginAtl.dll
 C:\Users\satej\Desktop\FIIT\6.rocnik\zima\sipvs\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.ResolveComReference.cache
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.Core.dll
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.dll
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.XmlPlugin.dll
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.IPlugin.dll
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\Interop.Ditec_Zep_DSigXades_XmlPluginAtl.dll
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.ResolveComReference.cache
+C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CopyComplete
