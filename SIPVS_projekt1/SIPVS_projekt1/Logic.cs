@@ -97,7 +97,7 @@ namespace SIPVS_projekt1
             System.Diagnostics.Process.Start("html_output.html");
         }
 
-        public void signDocumentAsync()
+        public Boolean signDocument()
         {
             XmlPlugin xmlPlugin = new XmlPlugin();
             XadesSig dsig = new XadesSig();
@@ -115,10 +115,11 @@ namespace SIPVS_projekt1
             if (dsig.Sign("signatureId", null, "urn:oid:1.3.158.36061701.1.2.3") != 0)
             {
                 Console.WriteLine(dsig.ErrorMessage);
+                return false;
             }
             Console.WriteLine(dsig.SignedXmlWithEnvelope);
             File.WriteAllText("PodpisanaObjednavka.xades", dsig.SignedXmlWithEnvelope);
-
+            return true;
         }
 
     }

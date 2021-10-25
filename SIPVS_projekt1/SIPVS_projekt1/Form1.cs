@@ -89,6 +89,7 @@ namespace SIPVS_projekt1
         private void generateBtn_Click(object sender, EventArgs e)
         {
             this.errorLab.Visible = true;
+            errorLab.ForeColor = System.Drawing.Color.Black;
             this.errorLab.Text = "HTML súbor sa zobrazí vo Vami využívanom webovom prehliadači!";
             XslCompiledTransform xslt = new XslCompiledTransform();
             xslt.Load("generate_xml.xsl");
@@ -112,11 +113,13 @@ namespace SIPVS_projekt1
             {
                 log.validate();
                 errorLab.Visible = true;
+                errorLab.ForeColor = System.Drawing.Color.Green;
                 errorLab.Text = "Dokument je validny";
             }
             catch(Exception err)
             {
                 errorLab.Text = err.Message;
+                errorLab.ForeColor = System.Drawing.Color.Red;
                 errorLab.Visible = true;
                 return;
             }
@@ -138,7 +141,20 @@ namespace SIPVS_projekt1
 
         private void buttonSign_Click(object sender, EventArgs e)
         {
-            log.signDocumentAsync();
+            if (log.signDocument())
+            {
+                errorLab.Text = "Podpísané";
+                errorLab.ForeColor = System.Drawing.Color.Green;
+                errorLab.Visible = true;
+            }
+
+            else
+            {
+                errorLab.Text = "Chyba!";
+                errorLab.ForeColor = System.Drawing.Color.Red;
+                errorLab.Visible = true;
+            }
+
         }
     }
 }
