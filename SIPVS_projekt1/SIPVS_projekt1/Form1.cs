@@ -156,5 +156,21 @@ namespace SIPVS_projekt1
             }
 
         }
+
+        private void timestampBtn_Click(object sender, EventArgs e)
+        {
+            if (log.addTimestamp())
+            {
+                errorLab.Text = "Timestamp pridany!";
+                errorLab.ForeColor = System.Drawing.Color.Green;
+                errorLab.Visible = true;
+            }
+            else
+            {
+                errorLab.Text = "Chyba!";
+                errorLab.ForeColor = System.Drawing.Color.Red;
+                errorLab.Visible = true;
+            }
+        }
     }
 }

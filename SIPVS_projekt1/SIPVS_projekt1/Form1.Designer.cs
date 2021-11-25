@@ -55,6 +55,7 @@ namespace SIPVS_projekt1
             this.couponBtn = new System.Windows.Forms.CheckBox();
             this.buttonSign = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.timestampBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MovieDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -269,11 +270,24 @@ namespace SIPVS_projekt1
             this.label3.Text = "Objednávka filmov";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timestampBtn
+            // 
+            this.timestampBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.timestampBtn.ForeColor = System.Drawing.Color.Black;
+            this.timestampBtn.Location = new System.Drawing.Point(150, 492);
+            this.timestampBtn.Name = "timestampBtn";
+            this.timestampBtn.Size = new System.Drawing.Size(122, 38);
+            this.timestampBtn.TabIndex = 35;
+            this.timestampBtn.Text = "Časová  pečiatka";
+            this.timestampBtn.UseVisualStyleBackColor = true;
+            this.timestampBtn.Click += new System.EventHandler(this.timestampBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 542);
+            this.Controls.Add(this.timestampBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonSign);
             this.Controls.Add(this.couponBtn);
@@ -328,6 +342,7 @@ namespace SIPVS_projekt1
         private System.Windows.Forms.CheckBox couponBtn;
         private System.Windows.Forms.Button buttonSign;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button timestampBtn;
     }
 }
 

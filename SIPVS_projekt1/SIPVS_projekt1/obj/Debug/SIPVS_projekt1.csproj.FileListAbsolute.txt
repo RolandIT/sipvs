@@ -71,3 +71,16 @@ C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\
 C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\Interop.Ditec_Zep_DSigXades_XmlPluginAtl.dll
 C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.ResolveComReference.cache
 C:\Users\Roland\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CopyComplete
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.AssemblyReference.cache
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.ResolveComReference.cache
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Form1.resources
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Properties.Resources.resources
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.GenerateResource.cache
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CoreCompileInputs.cache
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.exe
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.pdb
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe.config
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.pdb
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\Interop.Ditec_Zep_DSigXades_XmlPluginAtl.dll
+C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\BouncyCastle.Crypto.dll
