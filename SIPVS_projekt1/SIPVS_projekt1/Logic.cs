@@ -161,19 +161,183 @@ namespace SIPVS_projekt1
         public void overPodpisy()
         {
             string[] podpisy_nazov = { "01XadesT.xml", "02XadesT.xml", "03XadesT.xml" };
+            string[] valid_signature_scheme = {
+                "http://www.w3.org/2000/09/xmldsig#dsa-sha1",
+                "http://www.w3.org/2000/09/xmldsig#rsa-sha1",
+                "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
+                "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384",
+                "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"};
+            string[] valid_digital_fingerprint = {
+                "http://www.w3.org/2000/09/xmldsig#sha1",
+                "http://www.w3.org/2001/04/xmldsig-more#sha224",
+                "http://www.w3.org/2001/04/xmlenc#sha256",
+                "http://www.w3.org/2001/04/xmldsig-more#sha384",
+                "http://www.w3.org/2001/04/xmlenc#sha512"};
+            string canonicalizationMethod = "http://www.w3.org/TR/2001/REC-xml-c14n-20010315";
+            string[] valid_Transforms = {
+                "http://www.w3.org/2000/09/xmldsig#base64",
+                "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"};
 
             for (int i = 0; i < podpisy_nazov.Length; i++)
             {
-                string podpis = File.ReadAllText("priklady/" + podpisy_nazov[i]);
-                var element = XElement.Parse(podpis);
+                bool signatureOK = true;
+                string signature_error_msg = "";
+                XmlDocument doc = new XmlDocument();
+                doc.Load("priklady/" + podpisy_nazov[i]);
+                XmlElement root = doc.DocumentElement;
+                if (root.GetAttribute("xmlns:xzep") == "" || root.GetAttribute("xmlns:ds") == "")
+                {
+                    Console.WriteLine("Subor " + i + ": koreňový element musí obsahovať atribúty xmlns:xzep a xmlns:ds podľa profilu XADES_ZEP. ");
+                    continue;
+                }
 
-                //kontrola1
-                XNamespace ns = XNamespace.Get("xzep");
-                var listOfNames = element.Descendants(ns + "DataEnvelope")
-                                     .Select(x => x.Value).ToList();
-                Console.WriteLine(listOfNames);
+                XmlNodeList nodes = doc.SelectNodes("//*");
+                foreach (XmlNode x in nodes)
+                {
+                    if (x.Name.Equals("ds:SignatureMethod"))
+                    {
+                        if (!valid_signature_scheme.Contains(x.Attributes[0].Value)){
+                            signatureOK = false;
+                            signature_error_msg = " ds:SignatureMethod musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
+                        } 
+                    }
+                    if (x.Name.Equals("ds:CanonicalizationMethod"))
+                    {
+                        if (!x.Attributes[0].Value.Equals(canonicalizationMethod))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " ds:CanonicalizationMethod musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
+                        }
+                    }
+                    if (x.Name.Equals("ds:Transform"))
+                    {
+                        if (x.Attributes.Count == 0 || !valid_Transforms.Contains(x.Attributes[0].Value))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " ds:Transforms musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
+                        }
+                    }
+                    if (x.Name.Equals("ds:DigestMethod"))
+                    {
+                        if (!valid_digital_fingerprint.Contains(x.Attributes[0].Value))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " ds:DigestMethod musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
+                        }
+                    }
+
+                }
+                if (!signatureOK)
+                {
+                    Console.WriteLine("Subor " + i + signature_error_msg);
+                    continue;
+                }
+                XmlNamespaceManager xNS = new XmlNamespaceManager(doc.NameTable);
+                XmlElement xSignature = root;
+                //verify signature
+                byte[] signatureCertificate = Convert.FromBase64String(xSignature.SelectSingleNode(@"//ds:KeyInfo/ds:X509Data/ds:X509Certificate", xNS).InnerText);
+                byte[] signature = Convert.FromBase64String(xSignature.SelectSingleNode(@"//ds:SignatureValue", xNS).InnerText);
+                XmlNode signedInfoN = xSignature.SelectSingleNode(@"//ds:SignedInfo", xNS);
+                string signedInfoTransformAlg = xSignature.SelectSingleNode(@"//ds:SignedInfo/ds:CanonicalizationMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
+                string signedInfoSignatureAlg = xSignature.SelectSingleNode(@"//ds:SignedInfo/ds:SignatureMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
+                byte[] objSignedInfoOld = canonicalize(beforeCanonicalize(signedInfoN, true), signedInfoTransformAlg);
+                byte[] objSignedInfoNew = canonicalize(beforeCanonicalize(signedInfoN), signedInfoTransformAlg);
+
+                string errMsg = "";
+                bool res = verifySign(signatureCertificate, signature, objSignedInfoNew, signedInfoSignatureAlg, out errMsg);
+                if(!res)
+                {
+	                res = verifySign(signatureCertificate, signature, objSignedInfoOld, signedInfoSignatureAlg, out errMsg);
+	                if(!res)
+	                {
+                        Console.WriteLine("Subor " + i + " pizdec:" + errMsg);
+                        continue;
+                    }
+                }
+
+
+                Console.WriteLine("Subor " + i + " OK");
                 //kontrola2
             }
         }
+
+        private object beforeCanonicalize(XmlNode signedInfoN)
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
+
+        private object beforeCanonicalize(XmlNode signedInfoN, bool v)
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
+
+        private byte[] canonicalize(object p, string signedInfoTransformAlg)
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
+
+        private bool verifySign(byte[] certificateData, byte[] signature, byte[] data, string digestAlg, out string errorMessage)
+        {
+            try
+            {
+                Org.BouncyCastle.Asn1.X509.SubjectPublicKeyInfo ski = Org.BouncyCastle.Asn1.X509.X509CertificateStructure.GetInstance(Org.BouncyCastle.Asn1.Asn1Object.FromByteArray(certificateData)).SubjectPublicKeyInfo;
+                Org.BouncyCastle.Crypto.AsymmetricKeyParameter pk = Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(ski);
+
+                string algStr = ""; //signature alg
+
+                //find digest
+                switch (digestAlg)
+                {
+                    case "http://www.w3.org/2000/09/xmldsig#rsa-sha1":
+                        algStr = "sha1";
+                        break;
+                    case "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256":
+                        algStr = "sha256";
+                        break;
+                    case "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384":
+                        algStr = "sha384";
+                        break;
+                    case "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512":
+                        algStr = "sha512";
+                        break;
+                }
+
+                //find encryption
+                switch (ski.AlgorithmID.ObjectID.Id)
+                {
+                    case "1.2.840.10040.4.1": //dsa
+                        algStr += "withdsa";
+                        break;
+                    case "1.2.840.113549.1.1.1": //rsa
+                        algStr += "withrsa";
+                        break;
+                    default:
+                        errorMessage = "verifySign 5: Unknown key algId = " + ski.AlgorithmID.ObjectID.Id;
+                        return false;
+                }
+
+                errorMessage = "verifySign 8: Creating signer: " + algStr;
+                Org.BouncyCastle.Crypto.ISigner verif = Org.BouncyCastle.Security.SignerUtilities.GetSigner(algStr);
+                verif.Init(false, pk);
+                verif.BlockUpdate(data, 0, data.Length);
+                bool res = verif.VerifySignature(signature);
+                if (!res)
+                {
+                    errorMessage = "verifySign 9: VerifySignature=false: dataB64=" + Convert.ToBase64String(data) + Environment.NewLine + "signatureB64=" + Convert.ToBase64String(signature) + Environment.NewLine + "certificateDataB64=" + Convert.ToBase64String(certificateData);
+                }
+
+                return res;
+
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "verifySign 10: " + ex.ToString();
+                return false;
+            }
+        }
+
     }
 }

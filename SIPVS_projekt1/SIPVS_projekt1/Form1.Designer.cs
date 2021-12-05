@@ -63,47 +63,42 @@ namespace SIPVS_projekt1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 129);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Location = new System.Drawing.Point(11, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 32);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Meno";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(416, 129);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label2.Location = new System.Drawing.Point(156, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 32);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Priezvisko";
             // 
             // CustomerName
             // 
-            this.CustomerName.Location = new System.Drawing.Point(37, 167);
-            this.CustomerName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.CustomerName.Location = new System.Drawing.Point(14, 70);
             this.CustomerName.Name = "CustomerName";
-            this.CustomerName.Size = new System.Drawing.Size(260, 38);
+            this.CustomerName.Size = new System.Drawing.Size(100, 20);
             this.CustomerName.TabIndex = 2;
             // 
             // CustomerSurname
             // 
-            this.CustomerSurname.Location = new System.Drawing.Point(424, 167);
-            this.CustomerSurname.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.CustomerSurname.Location = new System.Drawing.Point(159, 70);
             this.CustomerSurname.Name = "CustomerSurname";
-            this.CustomerSurname.Size = new System.Drawing.Size(260, 38);
+            this.CustomerSurname.Size = new System.Drawing.Size(100, 20);
             this.CustomerSurname.TabIndex = 3;
             this.CustomerSurname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // saveBtn
             // 
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.saveBtn.Location = new System.Drawing.Point(24, 961);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.saveBtn.Location = new System.Drawing.Point(9, 403);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(325, 148);
+            this.saveBtn.Size = new System.Drawing.Size(122, 62);
             this.saveBtn.TabIndex = 4;
             this.saveBtn.Text = "Uložiť";
             this.saveBtn.UseVisualStyleBackColor = true;
@@ -111,19 +106,17 @@ namespace SIPVS_projekt1
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(37, 746);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.dateTimePicker1.Location = new System.Drawing.Point(14, 313);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(527, 38);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 708);
-            this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label4.Location = new System.Drawing.Point(11, 297);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 32);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Dátum";
             // 
@@ -132,19 +125,17 @@ namespace SIPVS_projekt1
             this.MovieDataGrid.AllowUserToAddRows = false;
             this.MovieDataGrid.AllowUserToDeleteRows = false;
             this.MovieDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MovieDataGrid.Location = new System.Drawing.Point(45, 362);
-            this.MovieDataGrid.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.MovieDataGrid.Location = new System.Drawing.Point(17, 152);
             this.MovieDataGrid.Name = "MovieDataGrid";
             this.MovieDataGrid.RowHeadersWidth = 51;
-            this.MovieDataGrid.Size = new System.Drawing.Size(1053, 305);
+            this.MovieDataGrid.Size = new System.Drawing.Size(395, 128);
             this.MovieDataGrid.TabIndex = 11;
             // 
             // validateBtn
             // 
-            this.validateBtn.Location = new System.Drawing.Point(400, 1054);
-            this.validateBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.validateBtn.Location = new System.Drawing.Point(150, 442);
             this.validateBtn.Name = "validateBtn";
-            this.validateBtn.Size = new System.Drawing.Size(325, 55);
+            this.validateBtn.Size = new System.Drawing.Size(122, 23);
             this.validateBtn.TabIndex = 12;
             this.validateBtn.Text = "Validovať";
             this.validateBtn.UseVisualStyleBackColor = true;
@@ -152,10 +143,9 @@ namespace SIPVS_projekt1
             // 
             // generateBtn
             // 
-            this.generateBtn.Location = new System.Drawing.Point(771, 1054);
-            this.generateBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.generateBtn.Location = new System.Drawing.Point(289, 442);
             this.generateBtn.Name = "generateBtn";
-            this.generateBtn.Size = new System.Drawing.Size(325, 55);
+            this.generateBtn.Size = new System.Drawing.Size(122, 23);
             this.generateBtn.TabIndex = 13;
             this.generateBtn.Text = "Generovať";
             this.generateBtn.UseVisualStyleBackColor = true;
@@ -165,56 +155,50 @@ namespace SIPVS_projekt1
             // 
             this.errorLab.AutoSize = true;
             this.errorLab.ForeColor = System.Drawing.Color.Red;
-            this.errorLab.Location = new System.Drawing.Point(32, 1121);
-            this.errorLab.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.errorLab.Location = new System.Drawing.Point(12, 470);
             this.errorLab.Name = "errorLab";
-            this.errorLab.Size = new System.Drawing.Size(93, 32);
+            this.errorLab.Size = new System.Drawing.Size(35, 13);
             this.errorLab.TabIndex = 30;
             this.errorLab.Text = "label3";
             this.errorLab.Visible = false;
             // 
             // Coupon
             // 
-            this.Coupon.Location = new System.Drawing.Point(832, 830);
-            this.Coupon.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Coupon.Location = new System.Drawing.Point(312, 348);
             this.Coupon.Name = "Coupon";
-            this.Coupon.Size = new System.Drawing.Size(260, 38);
+            this.Coupon.Size = new System.Drawing.Size(100, 20);
             this.Coupon.TabIndex = 16;
             this.Coupon.Visible = false;
             // 
             // couponLb
             // 
             this.couponLb.AutoSize = true;
-            this.couponLb.Location = new System.Drawing.Point(707, 839);
-            this.couponLb.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.couponLb.Location = new System.Drawing.Point(265, 352);
             this.couponLb.Name = "couponLb";
-            this.couponLb.Size = new System.Drawing.Size(106, 32);
+            this.couponLb.Size = new System.Drawing.Size(41, 13);
             this.couponLb.TabIndex = 17;
             this.couponLb.Text = "Kupón:";
             this.couponLb.Visible = false;
             // 
             // MovieName
             // 
-            this.MovieName.Location = new System.Drawing.Point(37, 274);
-            this.MovieName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.MovieName.Location = new System.Drawing.Point(14, 115);
             this.MovieName.Name = "MovieName";
-            this.MovieName.Size = new System.Drawing.Size(260, 38);
+            this.MovieName.Size = new System.Drawing.Size(100, 20);
             this.MovieName.TabIndex = 18;
             // 
             // MovieDays
             // 
-            this.MovieDays.Location = new System.Drawing.Point(424, 274);
-            this.MovieDays.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.MovieDays.Location = new System.Drawing.Point(159, 115);
             this.MovieDays.Name = "MovieDays";
-            this.MovieDays.Size = new System.Drawing.Size(260, 38);
+            this.MovieDays.Size = new System.Drawing.Size(100, 20);
             this.MovieDays.TabIndex = 19;
             // 
             // addEntryBtn
             // 
-            this.addEntryBtn.Location = new System.Drawing.Point(771, 269);
-            this.addEntryBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.addEntryBtn.Location = new System.Drawing.Point(289, 113);
             this.addEntryBtn.Name = "addEntryBtn";
-            this.addEntryBtn.Size = new System.Drawing.Size(200, 55);
+            this.addEntryBtn.Size = new System.Drawing.Size(75, 23);
             this.addEntryBtn.TabIndex = 20;
             this.addEntryBtn.Text = "Pridať";
             this.addEntryBtn.UseVisualStyleBackColor = true;
@@ -223,20 +207,18 @@ namespace SIPVS_projekt1
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 236);
-            this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label6.Location = new System.Drawing.Point(14, 99);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(163, 32);
+            this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 22;
             this.label6.Text = "Názov filmu";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(416, 236);
-            this.label7.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label7.Location = new System.Drawing.Point(156, 99);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 32);
+            this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 23;
             this.label7.Text = "Počet dní";
             // 
@@ -247,10 +229,9 @@ namespace SIPVS_projekt1
             // chooseFile
             // 
             this.chooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.chooseFile.Location = new System.Drawing.Point(400, 961);
-            this.chooseFile.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chooseFile.Location = new System.Drawing.Point(150, 403);
             this.chooseFile.Name = "chooseFile";
-            this.chooseFile.Size = new System.Drawing.Size(696, 91);
+            this.chooseFile.Size = new System.Drawing.Size(261, 38);
             this.chooseFile.TabIndex = 14;
             this.chooseFile.Text = "Vybrať súbor";
             this.chooseFile.UseVisualStyleBackColor = true;
@@ -259,10 +240,9 @@ namespace SIPVS_projekt1
             // couponBtn
             // 
             this.couponBtn.AutoSize = true;
-            this.couponBtn.Location = new System.Drawing.Point(45, 830);
-            this.couponBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.couponBtn.Location = new System.Drawing.Point(17, 348);
             this.couponBtn.Name = "couponBtn";
-            this.couponBtn.Size = new System.Drawing.Size(303, 36);
+            this.couponBtn.Size = new System.Drawing.Size(122, 17);
             this.couponBtn.TabIndex = 32;
             this.couponBtn.Text = "Máte zlavový kupón";
             this.couponBtn.UseVisualStyleBackColor = true;
@@ -272,10 +252,9 @@ namespace SIPVS_projekt1
             // 
             this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.buttonSign.ForeColor = System.Drawing.Color.Black;
-            this.buttonSign.Location = new System.Drawing.Point(771, 1173);
-            this.buttonSign.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.buttonSign.Location = new System.Drawing.Point(289, 492);
             this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(325, 91);
+            this.buttonSign.Size = new System.Drawing.Size(122, 38);
             this.buttonSign.TabIndex = 33;
             this.buttonSign.Text = "Podpísať teraz";
             this.buttonSign.UseVisualStyleBackColor = true;
@@ -285,10 +264,9 @@ namespace SIPVS_projekt1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 20F);
-            this.label3.Location = new System.Drawing.Point(227, 21);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label3.Location = new System.Drawing.Point(85, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(583, 75);
+            this.label3.Size = new System.Drawing.Size(235, 32);
             this.label3.TabIndex = 34;
             this.label3.Text = "Objednávka filmov";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -297,10 +275,9 @@ namespace SIPVS_projekt1
             // 
             this.timestampBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.timestampBtn.ForeColor = System.Drawing.Color.Black;
-            this.timestampBtn.Location = new System.Drawing.Point(400, 1173);
-            this.timestampBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.timestampBtn.Location = new System.Drawing.Point(150, 492);
             this.timestampBtn.Name = "timestampBtn";
-            this.timestampBtn.Size = new System.Drawing.Size(325, 91);
+            this.timestampBtn.Size = new System.Drawing.Size(122, 38);
             this.timestampBtn.TabIndex = 35;
             this.timestampBtn.Text = "Časová  pečiatka";
             this.timestampBtn.UseVisualStyleBackColor = true;
@@ -310,10 +287,9 @@ namespace SIPVS_projekt1
             // 
             this.overPodpisyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.overPodpisyBtn.ForeColor = System.Drawing.Color.Black;
-            this.overPodpisyBtn.Location = new System.Drawing.Point(400, 1278);
-            this.overPodpisyBtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.overPodpisyBtn.Location = new System.Drawing.Point(150, 536);
             this.overPodpisyBtn.Name = "overPodpisyBtn";
-            this.overPodpisyBtn.Size = new System.Drawing.Size(325, 91);
+            this.overPodpisyBtn.Size = new System.Drawing.Size(122, 38);
             this.overPodpisyBtn.TabIndex = 36;
             this.overPodpisyBtn.Text = "Over elektronické podpisy";
             this.overPodpisyBtn.UseVisualStyleBackColor = true;
@@ -321,9 +297,9 @@ namespace SIPVS_projekt1
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 1418);
+            this.ClientSize = new System.Drawing.Size(425, 576);
             this.Controls.Add(this.overPodpisyBtn);
             this.Controls.Add(this.timestampBtn);
             this.Controls.Add(this.label3);
@@ -348,7 +324,6 @@ namespace SIPVS_projekt1
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chooseFile);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.MovieDataGrid)).EndInit();
             this.ResumeLayout(false);
