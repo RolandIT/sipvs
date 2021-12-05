@@ -12,6 +12,7 @@ using Ditec.Zep.DSigXades.Plugins;
 using Ditec.Zep.DSigXades.Forms;
 using Ditec.Zep.DSigXades;
 using System.IO;
+using System.Security.Cryptography.Xml;
 
 namespace SIPVS_projekt1
 {
@@ -160,7 +161,7 @@ namespace SIPVS_projekt1
 
         public void overPodpisy()
         {
-            string[] podpisy_nazov = { "01XadesT.xml", "02XadesT.xml", "03XadesT.xml" };
+            string[] podpisy_nazov = Directory.GetFiles("./priklady/");
             string[] valid_signature_scheme = {
                 "http://www.w3.org/2000/09/xmldsig#dsa-sha1",
                 "http://www.w3.org/2000/09/xmldsig#rsa-sha1",
@@ -178,16 +179,16 @@ namespace SIPVS_projekt1
                 "http://www.w3.org/2000/09/xmldsig#base64",
                 "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"};
 
-            for (int i = 0; i < podpisy_nazov.Length; i++)
+            foreach (string docfile in podpisy_nazov)
             {
                 bool signatureOK = true;
                 string signature_error_msg = "";
                 XmlDocument doc = new XmlDocument();
-                doc.Load("priklady/" + podpisy_nazov[i]);
+                doc.Load(docfile);
                 XmlElement root = doc.DocumentElement;
                 if (root.GetAttribute("xmlns:xzep") == "" || root.GetAttribute("xmlns:ds") == "")
                 {
-                    Console.WriteLine("Subor " + i + ": koreňový element musí obsahovať atribúty xmlns:xzep a xmlns:ds podľa profilu XADES_ZEP. ");
+                    Console.WriteLine(docfile + ": koreňový element musí obsahovať atribúty xmlns:xzep a xmlns:ds podľa profilu XADES_ZEP. ");
                     continue;
                 }
 
@@ -229,54 +230,46 @@ namespace SIPVS_projekt1
                 }
                 if (!signatureOK)
                 {
-                    Console.WriteLine("Subor " + i + signature_error_msg);
+                    Console.WriteLine(docfile + signature_error_msg);
                     continue;
                 }
                 XmlNamespaceManager xNS = new XmlNamespaceManager(doc.NameTable);
+                xNS.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
                 XmlElement xSignature = root;
                 //verify signature
+                if(xSignature.SelectSingleNode(@"//ds:KeyInfo/ds:X509Data/ds:X509Certificate", xNS) == null)
+                {
+                    Console.WriteLine(docfile + " chybne ds:KeyInfo/ds:X509Data/ds:X509Certificate");
+                    continue;
+                }
                 byte[] signatureCertificate = Convert.FromBase64String(xSignature.SelectSingleNode(@"//ds:KeyInfo/ds:X509Data/ds:X509Certificate", xNS).InnerText);
                 byte[] signature = Convert.FromBase64String(xSignature.SelectSingleNode(@"//ds:SignatureValue", xNS).InnerText);
                 XmlNode signedInfoN = xSignature.SelectSingleNode(@"//ds:SignedInfo", xNS);
                 string signedInfoTransformAlg = xSignature.SelectSingleNode(@"//ds:SignedInfo/ds:CanonicalizationMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
                 string signedInfoSignatureAlg = xSignature.SelectSingleNode(@"//ds:SignedInfo/ds:SignatureMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
-                byte[] objSignedInfoOld = canonicalize(beforeCanonicalize(signedInfoN, true), signedInfoTransformAlg);
-                byte[] objSignedInfoNew = canonicalize(beforeCanonicalize(signedInfoN), signedInfoTransformAlg);
+
+                XmlDsigC14NTransform t = new XmlDsigC14NTransform();
+                t.LoadInput(doc);
+                MemoryStream ms = (MemoryStream)t.GetOutput(typeof(Stream));
+                StreamReader reader = new StreamReader(ms);
+                string text = reader.ReadToEnd();
+                byte[] objSignedInfoNew = Encoding.ASCII.GetBytes(text);
+                /*XmlDsigC14NTransform transform = new XmlDsigC14NTransform();
+                transform.LoadInput(signedInfoN);
+                transform.Algorithm = signedInfoTransformAlg;
+                MemoryStream ms = (MemoryStream)transform.GetOutput(typeof(Stream));
+                byte[] objSignedInfoNew = ms.ToArray();*/
 
                 string errMsg = "";
                 bool res = verifySign(signatureCertificate, signature, objSignedInfoNew, signedInfoSignatureAlg, out errMsg);
-                if(!res)
-                {
-	                res = verifySign(signatureCertificate, signature, objSignedInfoOld, signedInfoSignatureAlg, out errMsg);
-	                if(!res)
-	                {
-                        Console.WriteLine("Subor " + i + " pizdec:" + errMsg);
-                        continue;
-                    }
+
+	            if(!res)
+	            {
+                    Console.WriteLine(docfile + " pizdec:");
+                    continue;
                 }
-
-
-                Console.WriteLine("Subor " + i + " OK");
-                //kontrola2
+                Console.WriteLine(docfile + " OK");
             }
-        }
-
-        private object beforeCanonicalize(XmlNode signedInfoN)
-        {
-            //TODO
-            throw new NotImplementedException();
-        }
-
-        private object beforeCanonicalize(XmlNode signedInfoN, bool v)
-        {
-            //TODO
-            throw new NotImplementedException();
-        }
-
-        private byte[] canonicalize(object p, string signedInfoTransformAlg)
-        {
-            //TODO
-            throw new NotImplementedException();
         }
 
         private bool verifySign(byte[] certificateData, byte[] signature, byte[] data, string digestAlg, out string errorMessage)
