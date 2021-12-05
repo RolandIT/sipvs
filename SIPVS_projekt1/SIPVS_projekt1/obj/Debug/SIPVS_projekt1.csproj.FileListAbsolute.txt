@@ -84,3 +84,10 @@ C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_p
 C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.pdb
 C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\Interop.Ditec_Zep_DSigXades_XmlPluginAtl.dll
 C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.Core.dll
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.dll
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.XmlPlugin.dll
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.IPlugin.dll
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\Interop.Ditec_Zep_DSigXades_XmlPluginAtl.dll
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.ResolveComReference.cache
+C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CopyComplete

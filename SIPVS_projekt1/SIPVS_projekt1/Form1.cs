@@ -172,5 +172,13 @@ namespace SIPVS_projekt1
                 errorLab.Visible = true;
             }
         }
+
+        private void overPodpisyBtn_Click(object sender, EventArgs e)
+        {
+            errorLab.Text = "Podpisy boli overené";
+            errorLab.ForeColor = System.Drawing.Color.Green;
+            errorLab.Visible = true;
+            log.overPodpisy();
+        }
     }
 }

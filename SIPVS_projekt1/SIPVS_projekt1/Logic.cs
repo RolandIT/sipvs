@@ -134,14 +134,9 @@ namespace SIPVS_projekt1
             sk.ditec.test.TS tsref = new sk.ditec.test.TS();
             string pizdec = tsref.GetTimestamp(Convert.ToBase64String(ts));
             byte[] data = Convert.FromBase64String(pizdec);
-            //string decodedString = Encoding.Default.GetString(data);
 
             Org.BouncyCastle.Tsp.TimeStampResponse test2 = new Org.BouncyCastle.Tsp.TimeStampResponse(data);
             Console.WriteLine(test2.GetHashCode());
-            //Console.WriteLine(pizdec);
-            //XNamespace entryNamespace = "http://uri.etsi.org/01903/v1.3.2#";
-            //XElement doc = XElement.Load(@"PodpisanaObjednavka.xml");
-
 
             signedDoc = signedDoc.Replace("</xades:QualifyingProperties>",
                 "<xades:UnsignedProperties>" +
@@ -157,22 +152,28 @@ namespace SIPVS_projekt1
 
                 "</xades:UnsignedProperties> </xades:QualifyingProperties>");
 
-
-            //Console.WriteLine(doc.GetDefaultNamespace());
-            //doc = (XElement)doc.Element(entryNamespace + "DataEnvelope");
-            //Console.WriteLine(doc);
-            /*doc.Add(new XElement(entryNamespace + "UnsignedSignatureProperties",
-                    new XElement(entryNamespace + "SignatureTimeStamp",
-                        new XAttribute("Id", "Signature20140325080345213SignatureTimeStamp")),
-                    new XElement(entryNamespace + "EncapsulatedTimeStamp", test2.GetEncoded())
-                    ));*/
-
-            //Org.BouncyCastle.Tsp.TimeStampRequest test = new Org.BouncyCastle.Tsp.TimeStampRequest();
-
             File.WriteAllText("PodpisanaObjednavkaSCasovouPeciatkou.xades", signedDoc);
             File.WriteAllText("PodpisanaObjednavkaSCasovouPeciatkou.xml", signedDoc);
 
             return true;
+        }
+
+        public void overPodpisy()
+        {
+            string[] podpisy_nazov = { "01XadesT.xml", "02XadesT.xml", "03XadesT.xml" };
+
+            for (int i = 0; i < podpisy_nazov.Length; i++)
+            {
+                string podpis = File.ReadAllText("priklady/" + podpisy_nazov[i]);
+                var element = XElement.Parse(podpis);
+
+                //kontrola1
+                XNamespace ns = XNamespace.Get("xzep");
+                var listOfNames = element.Descendants(ns + "DataEnvelope")
+                                     .Select(x => x.Value).ToList();
+                Console.WriteLine(listOfNames);
+                //kontrola2
+            }
         }
     }
 }
