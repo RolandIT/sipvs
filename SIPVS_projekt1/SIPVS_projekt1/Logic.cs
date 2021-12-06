@@ -249,10 +249,17 @@ namespace SIPVS_projekt1
                 string signedInfoSignatureAlg = xSignature.SelectSingleNode(@"//ds:SignedInfo/ds:SignatureMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
 
                 XmlDsigC14NTransform t = new XmlDsigC14NTransform();
-                t.LoadInput(doc);
+                t.Algorithm = signedInfoTransformAlg;
+
+                //xSignature.SelectSingleNode(@"//ds:Signature", xNS).OuterXml
+                XmlDocument toCanonicalize = new XmlDocument();
+                toCanonicalize.LoadXml(signedInfoN.OuterXml);
+                t.LoadInput(toCanonicalize);
+
                 MemoryStream ms = (MemoryStream)t.GetOutput(typeof(Stream));
                 StreamReader reader = new StreamReader(ms);
                 string text = reader.ReadToEnd();
+
                 byte[] objSignedInfoNew = Encoding.ASCII.GetBytes(text);
                 /*XmlDsigC14NTransform transform = new XmlDsigC14NTransform();
                 transform.LoadInput(signedInfoN);
@@ -260,12 +267,12 @@ namespace SIPVS_projekt1
                 MemoryStream ms = (MemoryStream)transform.GetOutput(typeof(Stream));
                 byte[] objSignedInfoNew = ms.ToArray();*/
 
-                string errMsg = "";
+                string errMsg;
                 bool res = verifySign(signatureCertificate, signature, objSignedInfoNew, signedInfoSignatureAlg, out errMsg);
 
 	            if(!res)
 	            {
-                    Console.WriteLine(docfile + " pizdec:");
+                    Console.WriteLine(docfile + " pizdec: Podpis je zly - " + errMsg);
                     continue;
                 }
                 Console.WriteLine(docfile + " OK");
@@ -319,7 +326,7 @@ namespace SIPVS_projekt1
                 bool res = verif.VerifySignature(signature);
                 if (!res)
                 {
-                    errorMessage = "verifySign 9: VerifySignature=false: dataB64=" + Convert.ToBase64String(data) + Environment.NewLine + "signatureB64=" + Convert.ToBase64String(signature) + Environment.NewLine + "certificateDataB64=" + Convert.ToBase64String(certificateData);
+                    errorMessage = "verifySign 9: VerifySignature=false: dataB64=" + Convert.ToBase64String(data) + Environment.NewLine + Environment.NewLine + "signatureB64=" + Convert.ToBase64String(signature) + Environment.NewLine + Environment.NewLine + "certificateDataB64=" + Convert.ToBase64String(certificateData);
                 }
 
                 return res;

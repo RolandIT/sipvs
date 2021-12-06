@@ -93,3 +93,17 @@ C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS
 C:\Users\Strigy\Desktop\FIIT Documents\11. semester\SIPVS_I\projekt1\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CopyComplete
 C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.SuggestedBindingRedirects.cache
 C:\Users\rolan\OneDrive\Documents\STU FIIT\ING\3. semester\SIPVS\Zadania\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CopyComplete
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe.config
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.exe
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\SIPVS_projekt1.pdb
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\BouncyCastle.Crypto.dll
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\bin\Debug\Ditec.Zep.DSigXades.IPlugin.dll
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.AssemblyReference.cache
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.ResolveComReference.cache
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Form1.resources
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.Properties.Resources.resources
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.GenerateResource.cache
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CoreCompileInputs.cache
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.csproj.CopyComplete
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.exe
+D:\Git\sipvs\SIPVS_projekt1\SIPVS_projekt1\obj\Debug\SIPVS_projekt1.pdb
