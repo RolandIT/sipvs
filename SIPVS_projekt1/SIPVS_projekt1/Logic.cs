@@ -251,10 +251,12 @@ namespace SIPVS_projekt1
                 XmlDsigC14NTransform t = new XmlDsigC14NTransform();
                 t.Algorithm = signedInfoTransformAlg;
 
-                //xSignature.SelectSingleNode(@"//ds:Signature", xNS).OuterXml
                 XmlDocument toCanonicalize = new XmlDocument();
                 toCanonicalize.LoadXml(signedInfoN.OuterXml);
                 t.LoadInput(toCanonicalize);
+
+
+
 
                 MemoryStream ms = (MemoryStream)t.GetOutput(typeof(Stream));
                 StreamReader reader = new StreamReader(ms);
@@ -272,9 +274,34 @@ namespace SIPVS_projekt1
 
 	            if(!res)
 	            {
-                    Console.WriteLine(docfile + " pizdec: Podpis je zly - " + errMsg);
+                    Console.WriteLine(docfile + " Error: Podpis je zly - " + errMsg);
                     continue;
                 }
+
+                //Zo signed info vybrat vsetky reference elementy, dereferencovat(?) uri a kanalizovat, zahashovat, porovnat
+                //
+                XmlNodeList references = signedInfoN.SelectNodes(@"//ds:Reference", xNS);
+                foreach(XmlNode refNode in references){
+                    XmlDsigC14NTransform transform = new XmlDsigC14NTransform();
+                    transform.Algorithm = refNode.SelectSingleNode(@"//ds:Transform", xNS).Attributes.GetNamedItem("Algorithm").Value;
+
+                    Reference reference = new Reference();
+                    reference.DigestMethod = refNode.SelectSingleNode(@"//ds:DigestMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
+                    reference.Uri = refNode.Attributes.GetNamedItem("URI").Value;
+                    reference.AddTransform(transform);
+
+
+                    Console.WriteLine(refNode.SelectSingleNode(@"//ds:DigestValue", xNS).InnerText);
+                    byte[] digestValue = Convert.FromBase64String(refNode.SelectSingleNode(@"//ds:DigestValue", xNS).InnerText);
+
+                    // TODO: Calculate hash from the fucking reference bullshit and compare with Digest in xml
+
+                    /*if (!digestValue.Equals()){
+                        Console.WriteLine(docfile + " Reference's " + reference.Uri + " Digest values do not match\n");
+                    }*/
+
+                }
+
                 Console.WriteLine(docfile + " OK");
             }
         }
