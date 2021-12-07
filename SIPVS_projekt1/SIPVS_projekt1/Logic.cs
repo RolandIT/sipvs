@@ -178,15 +178,30 @@ namespace SIPVS_projekt1
             string[] valid_Transforms = {
                 "http://www.w3.org/2000/09/xmldsig#base64",
                 "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"};
+            string[] ds_reference_type = {
+                "http://www.w3.org/2000/09/xmldsig#SignatureProperties",
+                "http://uri.etsi.org/01903#SignedProperties",
+                "http://www.w3.org/2000/09/xmldsig#Object",
+                "http://www.w3.org/2000/09/xmldsig#Manifest"};
+
             string signature_ID = "";
 
             foreach (string docfile in podpisy_nazov)
             {
-                bool signatureOK = true;
-                string signature_error_msg = "";
                 XmlDocument doc = new XmlDocument();
                 doc.Load(docfile);
                 XmlElement root = doc.DocumentElement;
+                XmlNamespaceManager xNS = new XmlNamespaceManager(doc.NameTable);
+                xNS.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
+
+                XmlNamespaceManager yNS = new XmlNamespaceManager(doc.NameTable);
+                yNS.AddNamespace("xades", "http://uri.etsi.org/01903/v1.3.2#");
+
+                bool signatureOK = true;
+                string signature_error_msg = "";
+                string keyInfo_ID = doc.SelectSingleNode(@"//ds:KeyInfo", xNS).Attributes[0].Value.ToString();
+                string signatureProperties_ID = doc.SelectSingleNode(@"//ds:SignatureProperties", xNS).Attributes[0].Value.ToString();
+                string signedProperties_ID = doc.SelectSingleNode(@"//xades:SignedProperties", yNS).Attributes[0].Value.ToString();
                 if (root.GetAttribute("xmlns:xzep") == "" || root.GetAttribute("xmlns:ds") == "")
                 {
                     Console.WriteLine(docfile + ": koreňový element musí obsahovať atribúty xmlns:xzep a xmlns:ds podľa profilu XADES_ZEP. ");
@@ -235,8 +250,6 @@ namespace SIPVS_projekt1
                 }
 
                 //CORE VALIDATION
-                XmlNamespaceManager xNS = new XmlNamespaceManager(doc.NameTable);
-                xNS.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
                 XmlElement xSignature = root;
                 //verify signature
                 if(xSignature.SelectSingleNode(@"//ds:KeyInfo/ds:X509Data/ds:X509Certificate", xNS) == null)
@@ -275,6 +288,31 @@ namespace SIPVS_projekt1
                     continue;
                 }
 
+                //Zo signed info vybrat vsetky reference elementy, dereferencovat(?) uri a kanalizovat, zahashovat, porovnat
+                //
+                XmlNodeList references = signedInfoN.SelectNodes(@"//ds:Reference", xNS);
+                foreach (XmlNode refNode in references)
+                {
+                    XmlDsigC14NTransform transform = new XmlDsigC14NTransform();
+                    transform.Algorithm = refNode.SelectSingleNode(@"//ds:Transform", xNS).Attributes.GetNamedItem("Algorithm").Value;
+
+                    Reference reference = new Reference();
+                    reference.DigestMethod = refNode.SelectSingleNode(@"//ds:DigestMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
+                    reference.Uri = refNode.Attributes.GetNamedItem("URI").Value;
+                    reference.AddTransform(transform);
+
+
+                    //Console.WriteLine(refNode.SelectSingleNode(@"//ds:DigestValue", xNS).InnerText);
+                    byte[] digestValue = Convert.FromBase64String(refNode.SelectSingleNode(@"//ds:DigestValue", xNS).InnerText);
+
+                    // TODO: Calculate hash from the fucking reference bullshit and compare with Digest in xml
+
+                    /*if (!digestValue.Equals()){
+                        Console.WriteLine(docfile + " Reference's " + reference.Uri + " Digest values do not match\n");
+                    }*/
+
+                }
+
                 foreach (XmlNode x in nodes)
                 {
                     if (x.Name.Equals("ds:Signature") && signatureOK == true)
@@ -292,6 +330,60 @@ namespace SIPVS_projekt1
                         {
                             signatureOK = false;
                             signature_error_msg = " CHYBA ds:SignatureValue - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                    }
+                    if (x.Name.Equals("ds:SignedInfo") && signatureOK == true)
+                    {
+                        foreach (XmlNode signedinfo_reference in x.ChildNodes) {
+                            if (signedinfo_reference.Name == "ds:Reference") {
+                                string reference_id = signedinfo_reference.Attributes[0].Value.ToString();
+                                string reference_type = signedinfo_reference.Attributes[1].Value.ToString();
+
+                                if (reference_id.Contains("KeyInfo"))
+                                {
+                                    if (reference_type != "" || !reference_id.Equals("Reference" + keyInfo_ID))
+                                    {
+                                        signatureOK = false;
+                                        signature_error_msg = " CHYBA ds:SignedInfo1 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                    }
+                                }
+                                else if (reference_id.Contains("SignatureProperties"))
+                                {
+                                    if (reference_type != "http://www.w3.org/2000/09/xmldsig#SignatureProperties" || !reference_id.Equals("Reference" + signatureProperties_ID))
+                                    {
+                                        signatureOK = false;
+                                        signature_error_msg = " CHYBA ds:SignedInfo2 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                    }
+                                }
+                                else if (reference_id.Contains("SignedProperties"))
+                                {
+                                    if (reference_type != "http://uri.etsi.org/01903#SignedProperties" || !reference_id.Equals("Reference" + signedProperties_ID))
+                                    {
+                                        signatureOK = false;
+                                        signature_error_msg = " CHYBA ds:SignedInfo3 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                    }
+                                }
+                                else {
+                                    string[] podporovane_typy = {
+                                       "http://www.w3.org/2000/09/xmldsig#Object",
+                                       "http://www.w3.org/2000/09/xmldsig#Manifest"
+                                    };
+                                    List<string> manifests_id_pom = new List<string>();
+
+                                    XmlNodeList manifests = doc.SelectNodes("//ds:Manifest", xNS);
+                                    //Console.WriteLine(manifests.Count);
+                                    for (int i= 0; i< manifests.Count; i++) {
+                                        //Console.WriteLine(manifests[i].Attributes[0].Value.ToString());
+                                        manifests_id_pom.Add("Reference" + manifests[i].Attributes[0].Value.ToString());
+                                    }
+                                    String[] manifests_id = manifests_id_pom.ToArray();
+
+                                    if (!podporovane_typy.Contains(reference_type) || !manifests_id.Contains(reference_id)) {
+                                        signatureOK = false;
+                                        signature_error_msg = " CHYBA ds:SignedInfo4 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                    }
+                                }
+                            }
                         }
                     }
                     if (x.Name.Equals("ds:KeyInfo") && signatureOK == true)
@@ -352,38 +444,53 @@ namespace SIPVS_projekt1
                             signature_error_msg = " CHYBA ds:SignatureProperties - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
                         }
                     }
+                    if (x.Name.Equals("ds:Manifest") && signatureOK == true) {
+                        if (!(x.Attributes[0].Name == "Id"))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " CHYBA ds:Manifest - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                        XmlNodeList manifest = doc.SelectNodes(@"//ds:Manifest", xNS);
+                        foreach (XmlNode xReference in manifest) {
+                            if (xReference.FirstChild.FirstChild.FirstChild.Name.Equals("ds:Transform"))
+                            {
+                                if (!valid_Transforms.Contains(xReference.FirstChild.FirstChild.FirstChild.Attributes[0].Value)) {
+                                    signatureOK = false;
+                                    signature_error_msg = " CHYBA ds:Manifest - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                }
+                            }
+                            if (xReference.FirstChild.FirstChild.Name.Equals("ds:DigestMethod"))
+                            {
+                                if (!valid_digital_fingerprint.Contains(xReference.FirstChild.FirstChild.Attributes[0].Value))
+                                {
+                                    signatureOK = false;
+                                    signature_error_msg = " CHYBA ds:Manifest - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                }
+                            }
+                            if (xReference.FirstChild.Name.Equals("ds:Reference"))
+                            {
+                                if (!ds_reference_type.Contains(xReference.FirstChild.Attributes[0].Value))
+                                {
+                                    signatureOK = false;
+                                    signature_error_msg = " CHYBA ds:Manifest - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                }
+                            }
+                            int pocitanie_id_atr = 0;
+                            foreach (XmlNode prechadzam_atr in x.Attributes)
+                                if (prechadzam_atr.Name == "Id")
+                                    pocitanie_id_atr += 1;
+                            if (pocitanie_id_atr != 1) {
+                                signatureOK = false;
+                                signature_error_msg = " CHYBA ds:Manifest - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                            }
+                        }
+                    }
                 }
                 if (!signatureOK)
                 {
                     Console.WriteLine(docfile + signature_error_msg);
                     continue;
                 }
-
-                //Zo signed info vybrat vsetky reference elementy, dereferencovat(?) uri a kanalizovat, zahashovat, porovnat
-                //
-                XmlNodeList references = signedInfoN.SelectNodes(@"//ds:Reference", xNS);
-                foreach(XmlNode refNode in references){
-                    XmlDsigC14NTransform transform = new XmlDsigC14NTransform();
-                    transform.Algorithm = refNode.SelectSingleNode(@"//ds:Transform", xNS).Attributes.GetNamedItem("Algorithm").Value;
-
-                    Reference reference = new Reference();
-                    reference.DigestMethod = refNode.SelectSingleNode(@"//ds:DigestMethod", xNS).Attributes.GetNamedItem("Algorithm").Value;
-                    reference.Uri = refNode.Attributes.GetNamedItem("URI").Value;
-                    reference.AddTransform(transform);
-
-
-                    Console.WriteLine(refNode.SelectSingleNode(@"//ds:DigestValue", xNS).InnerText);
-                    byte[] digestValue = Convert.FromBase64String(refNode.SelectSingleNode(@"//ds:DigestValue", xNS).InnerText);
-
-                    // TODO: Calculate hash from the fucking reference bullshit and compare with Digest in xml
-
-                    /*if (!digestValue.Equals()){
-                        Console.WriteLine(docfile + " Reference's " + reference.Uri + " Digest values do not match\n");
-                    }*/
-
-                }
-
-                Console.WriteLine(docfile + " OK");
             }
         }
 
