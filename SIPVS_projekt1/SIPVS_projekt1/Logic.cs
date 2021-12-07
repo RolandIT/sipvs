@@ -178,6 +178,7 @@ namespace SIPVS_projekt1
             string[] valid_Transforms = {
                 "http://www.w3.org/2000/09/xmldsig#base64",
                 "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"};
+            string signature_ID = "";
 
             foreach (string docfile in podpisy_nazov)
             {
@@ -195,14 +196,14 @@ namespace SIPVS_projekt1
                 XmlNodeList nodes = doc.SelectNodes("//*");
                 foreach (XmlNode x in nodes)
                 {
-                    if (x.Name.Equals("ds:SignatureMethod"))
+                    if (x.Name.Equals("ds:SignatureMethod") && signatureOK == true)
                     {
                         if (!valid_signature_scheme.Contains(x.Attributes[0].Value)){
                             signatureOK = false;
                             signature_error_msg = " ds:SignatureMethod musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
                         } 
                     }
-                    if (x.Name.Equals("ds:CanonicalizationMethod"))
+                    if (x.Name.Equals("ds:CanonicalizationMethod") && signatureOK == true)
                     {
                         if (!x.Attributes[0].Value.Equals(canonicalizationMethod))
                         {
@@ -210,7 +211,7 @@ namespace SIPVS_projekt1
                             signature_error_msg = " ds:CanonicalizationMethod musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
                         }
                     }
-                    if (x.Name.Equals("ds:Transform"))
+                    if (x.Name.Equals("ds:Transform") && signatureOK == true)
                     {
                         if (x.Attributes.Count == 0 || !valid_Transforms.Contains(x.Attributes[0].Value))
                         {
@@ -218,7 +219,7 @@ namespace SIPVS_projekt1
                             signature_error_msg = " ds:Transforms musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
                         }
                     }
-                    if (x.Name.Equals("ds:DigestMethod"))
+                    if (x.Name.Equals("ds:DigestMethod") && signatureOK == true)
                     {
                         if (!valid_digital_fingerprint.Contains(x.Attributes[0].Value))
                         {
@@ -226,13 +227,14 @@ namespace SIPVS_projekt1
                             signature_error_msg = " ds:DigestMethod musi obsahovať URI niektorého z podporovaných algoritmov podľa profilu XAdES_ZEP";
                         }
                     }
-
                 }
                 if (!signatureOK)
                 {
                     Console.WriteLine(docfile + signature_error_msg);
                     continue;
                 }
+
+                //CORE VALIDATION
                 XmlNamespaceManager xNS = new XmlNamespaceManager(doc.NameTable);
                 xNS.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
                 XmlElement xSignature = root;
@@ -263,18 +265,97 @@ namespace SIPVS_projekt1
                 string text = reader.ReadToEnd();
 
                 byte[] objSignedInfoNew = Encoding.ASCII.GetBytes(text);
-                /*XmlDsigC14NTransform transform = new XmlDsigC14NTransform();
-                transform.LoadInput(signedInfoN);
-                transform.Algorithm = signedInfoTransformAlg;
-                MemoryStream ms = (MemoryStream)transform.GetOutput(typeof(Stream));
-                byte[] objSignedInfoNew = ms.ToArray();*/
 
                 string errMsg;
                 bool res = verifySign(signatureCertificate, signature, objSignedInfoNew, signedInfoSignatureAlg, out errMsg);
 
 	            if(!res)
 	            {
-                    Console.WriteLine(docfile + " Error: Podpis je zly - " + errMsg);
+                    Console.WriteLine(docfile + " overenie hodnoty podpisu ds:SignatureValue a referencií v ds:SignedInfo zlyhalo");
+                    continue;
+                }
+
+                foreach (XmlNode x in nodes)
+                {
+                    if (x.Name.Equals("ds:Signature") && signatureOK == true)
+                    {
+                        signature_ID = x.Attributes[0].Value;
+                        if (!(x.Attributes.Count == 2 && x.Attributes[0].Name == "Id" && x.Attributes[1].Name == "xmlns:ds"))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " CHYBA ds:Signature - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                    }
+                    if (x.Name.Equals("ds:SignatureValue") && signatureOK == true)
+                    {
+                        if (!(x.Attributes.Count == 1 && x.Attributes[0].Name == "Id"))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " CHYBA ds:SignatureValue - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                    }
+                    if (x.Name.Equals("ds:KeyInfo") && signatureOK == true)
+                    {
+                        if (!(x.Attributes[0].Name == "Id"))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " CHYBA ds:KeyInfo - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                        foreach (XmlNode child in x.ChildNodes)
+                        {
+                            if (child.Name.Equals("ds:X509Data"))
+                            {
+                                int pocitadlo = 0;
+                                foreach (XmlNode subchild in child.ChildNodes)
+                                {
+                                    if (subchild.Name.Equals("ds:X509Certificate"))
+                                        pocitadlo += 1;
+                                    if (subchild.Name.Equals("ds:X509IssuerSerial"))
+                                        pocitadlo += 1;
+                                    if (subchild.Name.Equals("ds:X509SubjectName"))
+                                        pocitadlo += 1;
+                                }
+                                if (pocitadlo < 3) {
+                                    Console.WriteLine("pocitadlo " + pocitadlo);
+                                    signatureOK = false;
+                                    signature_error_msg = " CHYBA ds:KeyInfo - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                }
+                            }
+                        }
+                    }
+                    if (x.Name.Equals("ds:SignatureProperties") && signatureOK == true)
+                    {
+                        if (!(x.Attributes[0].Name == "Id"))
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " CHYBA ds:SignatureProperties - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                        int pocitadlo = 0;
+                        foreach (XmlNode child in x.ChildNodes) {
+                            if (child.Name.Equals("ds:SignatureProperty"))
+                            {
+                                if (child.Attributes[0].Value.Equals("#" + signature_ID))
+                                {
+                                    foreach (XmlNode subchild in child.ChildNodes)
+                                    {
+                                        if (subchild.Name.Equals("xzep:SignatureVersion"))
+                                            pocitadlo += 1;
+                                        if (subchild.Name.Equals("xzep:ProductInfos"))
+                                            pocitadlo += 1;
+                                    }
+                                }
+                            }
+                        }
+                        if (pocitadlo < 2)
+                        {
+                            signatureOK = false;
+                            signature_error_msg = " CHYBA ds:SignatureProperties - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                        }
+                    }
+                }
+                if (!signatureOK)
+                {
+                    Console.WriteLine(docfile + signature_error_msg);
                     continue;
                 }
 
