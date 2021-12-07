@@ -338,13 +338,14 @@ namespace SIPVS_projekt1
                             if (signedinfo_reference.Name == "ds:Reference") {
                                 string reference_id = signedinfo_reference.Attributes[0].Value.ToString();
                                 string reference_type = signedinfo_reference.Attributes[1].Value.ToString();
+                                string reference_type_name = signedinfo_reference.Attributes[1].Name.ToString();
 
                                 if (reference_id.Contains("KeyInfo"))
                                 {
-                                    if (reference_type != "" || !reference_id.Equals("Reference" + keyInfo_ID))
+                                    if (reference_type_name == "Type" || !reference_id.Equals("Reference" + keyInfo_ID))
                                     {
                                         signatureOK = false;
-                                        signature_error_msg = " CHYBA ds:SignedInfo1 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                        signature_error_msg = " CHYBA ds:SignedInfo - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
                                     }
                                 }
                                 else if (reference_id.Contains("SignatureProperties"))
@@ -352,7 +353,7 @@ namespace SIPVS_projekt1
                                     if (reference_type != "http://www.w3.org/2000/09/xmldsig#SignatureProperties" || !reference_id.Equals("Reference" + signatureProperties_ID))
                                     {
                                         signatureOK = false;
-                                        signature_error_msg = " CHYBA ds:SignedInfo2 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                        signature_error_msg = " CHYBA ds:SignedInfo - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
                                     }
                                 }
                                 else if (reference_id.Contains("SignedProperties"))
@@ -360,7 +361,7 @@ namespace SIPVS_projekt1
                                     if (reference_type != "http://uri.etsi.org/01903#SignedProperties" || !reference_id.Equals("Reference" + signedProperties_ID))
                                     {
                                         signatureOK = false;
-                                        signature_error_msg = " CHYBA ds:SignedInfo3 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                        signature_error_msg = " CHYBA ds:SignedInfo - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
                                     }
                                 }
                                 else {
@@ -380,7 +381,7 @@ namespace SIPVS_projekt1
 
                                     if (!podporovane_typy.Contains(reference_type) || !manifests_id.Contains(reference_id)) {
                                         signatureOK = false;
-                                        signature_error_msg = " CHYBA ds:SignedInfo4 - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
+                                        signature_error_msg = " CHYBA ds:SignedInfo - overenie ostatných elementov profilu XAdES_ZEP, ktoré prináležia do špecifikácie XML Signature";
                                     }
                                 }
                             }
